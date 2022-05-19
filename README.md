@@ -36,3 +36,4 @@ Zoom Clone using NodeJS, WebRTC and Websockets.
 
 -- git push -u origin main 명령어로 
 작업이 완료되었다면 커밋을 실행시켜줘야한다.
+그리고 동기화 까지 해주면 프로젝트 홈페이지에서 커밋된 내용을 확인 할 수 있다.
