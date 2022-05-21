@@ -1,4 +1,6 @@
 import express from 'express';
+import WebSocket from 'ws';
+import http from 'http';
 
 // pug페이지들을 렌더링하기 위해 pug 설정한다.
 const app = express()
@@ -11,5 +13,19 @@ app.get("/", (req, res) => res.render("home"))
 //catch all url을 생성하려면 이렇게 하면 된다.
 app.get("/*", (req, res) => res.redirect("/"))
 
-const handleListen = () => console.log(`listening on http://localhost:3000`)
-app.listen(3000, handleListen)
+
+const handleListen = () => console.log(`listening on http://localhost:3001`)
+//app.listen(3000, handleListen)
+
+const server = http.createServer(app)
+const wss = new WebSocket.Server({server})
+
+
+function handleConnection(socket) {
+    console.log(socket)
+}
+
+wss.on("connection", handleConnection)
+
+
+server.listen(3001, handleListen)
