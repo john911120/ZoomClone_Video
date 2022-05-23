@@ -25,15 +25,19 @@ function handleConnection(socket) {
     console.log(socket)
 }
 
+const sockets = []
+
+
 wss.on("connection", (socket) => {
+    sockets.push(socket)
     console.log("Connected to Browser ✅")
     socket.on("close", () => {
         console.log("Disconnected from the Client ❌")
     })
     socket.on("message", message => {
-        console.log(message)
+        sockets.forEach((aSocket) => aSocket.send(message))
+        socket.send(message)
     })
-    socket.send("hello")
 })
 
 server.listen(3001, handleListen)
