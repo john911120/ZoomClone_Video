@@ -1,0 +1,12 @@
+visual studio code setting plugin
+- 비주얼 스튜디오코드를 설치를 하면 반드시 선행으로 설치해야할 플러그인
+1. Auto Close Tag (Using on Web Develop)
+2. Auto Rename Tag (Using on Web Develop)
+3. ES7 React/Redux/GraphQLReact-Native snippets (Using ReactJS React)
+4. JavaScript and Typescript Nightly (Using on Web Develop JavaScript and Typescript)
+5. Korean (Visual studio Code Langage Setting)
+6. Live Server (Using on Web Develop)
+7. Material Icon Theme (Much more better then vscode Icon theme)
+8. Prettier (Using on Web Develop)
+9. ReactJs code Snippets (Using on ReactJS Develop)
+10. vetur (Using on Vue.js Develop)
