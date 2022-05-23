@@ -36,7 +36,7 @@ wss.on("connection", (socket) => {
     })
     socket.on("message", message => {
         sockets.forEach((aSocket) => aSocket.send(message))
-        socket.send(message)
+      //  socket.send(message)
     })
 })
 
