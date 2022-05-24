@@ -40,3 +40,6 @@ Zoom Clone using NodeJS, WebRTC and Websockets.
 
 13. npm i socket.io 터미널 설치
 14. socket.io 실습을 위해 app.js 기존 내용 삭제 / server.js 소스코드 일부 변경  /home.pug 기존 내용 삭제 다음과 같은 파일 삭제 변경 처리하였다.
+
+!) pug 문법 작성시 주의사항
+pug는 들여쓰기를 주의해야한다. 들여쓰면 쓸수록 하위태그가 되기때문이다. 들여쓰기를 space, tab으로 써도 상관 없지만 하나로 통일해야하고 항상 일정한 간격으로 들여써야한다. 2칸 들여썼으면 2칸으로 4칸으로 들여썼으면 4칸으로 들여써야한다.
