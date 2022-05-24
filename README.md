@@ -37,3 +37,6 @@ Zoom Clone using NodeJS, WebRTC and Websockets.
 -- git push -u origin main 명령어로 
 작업이 완료되었다면 커밋을 실행시켜줘야한다.
 그리고 동기화 까지 해주면 프로젝트 홈페이지에서 커밋된 내용을 확인 할 수 있다.
+
+13. npm i socket.io 터미널 설치
+14. socket.io 실습을 위해 app.js 기존 내용 삭제 / server.js 소스코드 일부 변경  /home.pug 기존 내용 삭제 다음과 같은 파일 삭제 변경 처리하였다.
