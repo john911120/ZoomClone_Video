@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<body>
+<h2>JavaScript Map Objects</h2>
+<p>Creating a Map from an Array:</p>
+
+<p id="demo"></p>
+
+<script>
+// Create a Map
+const GameItems = new Map([
+  ["ColtRevolver", 300000],
+  ["Cleaver", 20000],
+  ["SubMachineGun",100000],
+]);
+
+GameItems.set();
+GameItems.delete("Excalibur");
+
+document.getElementById("demo").innerHTML = 
+ GameItems.get("SubMachineGun");
+/* 
+document.getElementById("demo").innerHTML = 
+ `GameItems Map's size is :  ${GameItems.size}`;
+*/ 
+document.getElementById("demo").innerHTML = 
+ `GameItems Map in the SubMachineGun? : ${GameItems.has("Cleaver")}`
+
+</script>
+</body>
+<p>
+변수명.get() : 자바스크립트 Map함수에서 데이터를 가져올수 있다.<br>
+변수명.set() : 자바스크립트 Map함수에서 데이터를 추가 할 수 있다.<br>
+변수명.size() : 자바스크립트 Map함수에서 Map의 길이를 확인 할 수 있다.<br>
+변수명.delete() : 자바스크립트 Map함수에서 데이터를 제거 할 수 있다.<br>
+변수명.has() : 자바스크립트 Map함수에서 데이터가 존재하는지 여부를 확인 할 수 있다. 데이터가 존재한다면 true, 존재하지 않는다면 false
+변수명.forEach() : 자바스크립트 Map함수에서 Map에 저장된 데이터를 key, value를 뽑아온다. <br>
+변수명.entries() : 자바스크립트 Map함수에서 Map에 저장된 데이터를 key, value값을 리턴한다. <br>
+</p>
+</html>
+
+
