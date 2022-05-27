@@ -43,3 +43,8 @@ Zoom Clone using NodeJS, WebRTC and Websockets.
 
 !) pug 문법 작성시 주의사항
 pug는 들여쓰기를 주의해야한다. 들여쓰면 쓸수록 하위태그가 되기때문이다. 들여쓰기를 space, tab으로 써도 상관 없지만 하나로 통일해야하고 항상 일정한 간격으로 들여써야한다. 2칸 들여썼으면 2칸으로 4칸으로 들여썼으면 4칸으로 들여써야한다.
+
+
+soket.io admin panel 접근 가능하다.
+- 모든 소켓을 볼 수 있으며 채팅방과 클라이언트까지도 확인이 가능하다.
+npm i '@socket.io/admin-ui'
