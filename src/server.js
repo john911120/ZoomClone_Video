@@ -1,6 +1,8 @@
 import express from 'express';
-import SocketIO from "socket.io";
+import {Server} from "socket.io";
 import http from 'http';
+import { count } from 'console';
+import { instrument } from '@socket.io/admin-ui';
 
 // pug페이지들을 렌더링하기 위해 pug 설정한다.
 const app = express()
@@ -19,7 +21,16 @@ function handleConnection(socket) {
 
 const server = http.createServer(app)
 //IO서버를 생성
-const wsServer = SocketIO(server)
+const wsServer = new Server(server, {
+    cors:{
+        origin: ["https://admin.socket.io"],
+        credentials:true,
+    },
+})
+instrument(wsServer, {
+    auth:false
+})
+
 
 function publicRooms(){
     const {
@@ -36,6 +47,10 @@ function publicRooms(){
     return publicRooms
 }
 
+function countRoom(roomName){
+    return wsServer.sockets.adapter.rooms.get(roomName)?.size
+}
+
 
 wsServer.on("connection", socket => {
     socket["nickname"] = "Anonymous"
@@ -46,11 +61,11 @@ wsServer.on("connection", socket => {
     socket.on("enter_room", (roomName, done) => {
         socket.join(roomName)
         done()
-        socket.to(roomName).emit("welcome", socket.nickname)
+        socket.to(roomName).emit("welcome", socket.nickname, countRoom(roomName))
         wsServer.sockets.emit("room_change", publicRooms())
     })
     socket.on("disconnecting", () => {
-        socket.rooms.forEach((room) => socket.to(room).emit("bye", socket.nickname))
+        socket.rooms.forEach((room) => socket.to(room).emit("bye", socket.nickname, countRoom(room) -1))
         wsServer.sockets.emit("room_change", publicRooms())
     })
     socket.on("disconnect", () => {
