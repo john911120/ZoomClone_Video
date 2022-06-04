@@ -15,6 +15,13 @@ app.get("/*", (req, res) => res.redirect("/"))
 const httpServer = http.createServer(app)
 const wsServer = SocketIO(httpServer)
 
+wsServer.on("connection", (socket) => {
+    socket.on("join_room", (roomName, done) => {
+        socket.join(roomName)
+        done()
+    })
+})
+
 
 const handleListen = () => console.log(`listening on http://localhost:3001`)
 httpServer.listen(3001, handleListen)

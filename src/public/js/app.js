@@ -3,8 +3,15 @@
  const muteBtn = document.getElementById("mute")
  const cameraBtn = document.getElementById("camera")
  const cameraSelect = document.getElementById("cameras")
+ const call  = document.getElementById("call")
 
- let myStream;
+// Welcome Form(Join a room)
+const welcome = document.getElementById("welcome")
+const welcomeForm = document.querySelector("form")
+
+call.hidden = true
+
+let myStream;
  let muted = false
  let cameraOff = false
 
@@ -48,7 +55,6 @@
          console.log(e)
      }
  }
-getMedia()
 
 
 function handleMuteClick() {
@@ -77,6 +83,20 @@ async function handleCameraChange(){
     await getMedia(cameraSelect.value)
 }
 
+function handleWelcomeSubmit(event) {
+    event.preventDefault()
+    const input = welcome.querySelector("input")
+    socket.emit("join_room", input.value, startMedia)
+    input.value=""
+}
+
+function startMedia(){
+    welcome.hidden = true
+    call.hidden = false
+    getMedia()
+}
+
 muteBtn.addEventListener("click", handleMuteClick)
 cameraBtn.addEventListener("click", handleCameraClick)
 cameraSelect.addEventListener("input", handleCameraChange)
+welcomeForm.addEventListener("submit", handleWelcomeSubmit)
