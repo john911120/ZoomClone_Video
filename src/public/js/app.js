@@ -115,7 +115,7 @@ async function handleWelcomeSubmit(event) {
     await initCall()
     socket.emit("join_room", input.value)
     roomName = input.value
-    input.value=""
+    input.value=""  
 }
 
 //async function startMedia(){
@@ -132,6 +132,9 @@ function handleIce(data) {
 }
 
 function handleAddStream(data){
+    console.log("got a stream from peer")
+    console.log("peer's Stream", data.stream)
+    console.log("My stream", myStream)
     const peerFace = document.getElementById("peerFace")
     peerFace.srcObject = data.stream
 }
@@ -140,7 +143,7 @@ function handleAddStream(data){
 function makeConnection() {
     myPeerConnection = new RTCPeerConnection()
     myPeerConnection.addEventListener("icecandidate", handleIce)
-    myPeerConnection.addEventListener("addStream", handleAddStream)
+    myPeerConnection.addEventListener("addstream", handleAddStream)
     myStream.getTracks().forEach(track => myPeerConnection.addTrack(track, myStream))
 }
 
